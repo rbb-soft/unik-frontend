@@ -1,13 +1,19 @@
 <h2 mat-dialog-title>has Agregado <strong class="red">{{data.producto.nombre}}</strong> correctamente al Carrito</h2>
 <mat-dialog-content>
-    <div>
-        <img class="float-left" [src]="'//localhost/unicasport/administracion/' +data.producto.imagen" alt="">
-    </div>
-    <div class="float-left text-left">
-        <h2>{{data.producto.nombre}}</h2>
-        <h3>{{data.producto.precio}}</h3>
-        <p>{{data.producto.descripcion}}</p>
-        Categoria<span>: <i>{{data.producto.categoria}}</i></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img  class="img-fluid" [src]="'//localhost/unicasport/administracion/' +data.producto.imagen" alt="">
+            </div>
+            <div class="col-md-2 text-left">
+                <h2>{{data.producto.nombre}}</h2>
+                <h3>{{data.producto.precio}}</h3>                
+            </div>
+            <div class="col-md-4 text-left">
+                <p>{{data.producto.descripcion}}</p>
+                Categoria<span>: <i>{{data.producto.categoria}}</i></span>
+            </div>
+        </div>
     </div>
     
 </mat-dialog-content>
