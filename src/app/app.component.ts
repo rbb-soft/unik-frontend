@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { PupupComponent } from './pupup/pupup.component';
 import { DataService } from './service/data.service';
 import { I_productos } from './models/productos.interface';
+import { I_Carrito } from './models/carrito.interface';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,9 @@ import { I_productos } from './models/productos.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'Unica Sport -- Tienda';
+  Dcarrito:I_productos[]=[];
   Dproductos:I_productos[]=[];
+  cartTotalItems:number=0;
 
   constructor(public dialog: MatDialog, public productos:DataService){}
 
@@ -23,7 +25,8 @@ export class AppComponent implements OnInit{
     )
   }
   addToCart(item){
-
+    this.Dcarrito.push(item);
+    this.cartTotalItems=this.Dcarrito.length;
 
     // Open Modal
     let dialogRef = this.dialog.open(PupupComponent,{data:{producto:item}});
