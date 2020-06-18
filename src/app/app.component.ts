@@ -23,10 +23,13 @@ export class AppComponent implements OnInit{
     )
   }
   addToCart(item){
-    let dialogRef = this.dialog.open(PupupComponent,{data:{producto:item}});
 
+
+    // Open Modal
+    let dialogRef = this.dialog.open(PupupComponent,{data:{producto:item}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
+    // end open modal
   }
 }
