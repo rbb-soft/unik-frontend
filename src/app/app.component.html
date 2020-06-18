@@ -1,29 +1,37 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>{{title}}</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<div class="clear">
-  </div>
-<mat-card class="card" *ngFor="let producto of Dproductos">
-  <mat-card-header>
-    <mat-card-title>{{producto.nombre}}</mat-card-title>
-    <mat-card-subtitle><h3>${{producto.precio}}ARS</h3></mat-card-subtitle>
-  </mat-card-header>
-  <img class="img-card" mat-card-image src="//localhost/unicasport/administracion/{{producto.imagen}}" alt="{{producto.nombre}}">
-  <mat-card-content>
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>{{title}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+</header>
+<main>
+  <div class="container">
+  
+  
+    <div class="clear">
+      </div>
+    <mat-card class="card" *ngFor="let producto of Dproductos">
+      <mat-card-header>
+        <mat-card-title>{{producto.nombre}}</mat-card-title>
+        <mat-card-subtitle><h3>${{producto.precio}}ARS</h3></mat-card-subtitle>
+      </mat-card-header>
+      <img class="img-card" mat-card-image src="//localhost/unicasport/administracion/{{producto.imagen}}" alt="{{producto.nombre}}">
+      <mat-card-content>
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="accent"
+        (click)="addToCart(producto)">
+          Agregar al Carrito
+        </button>
+      </mat-card-actions> 
+    </mat-card>
     
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-flat-button color="accent"
-    (click)="openDialog(producto)">
-      Agregar al Carrito
-    </button>
-  </mat-card-actions> 
-</mat-card>
-
-
-
+    
+  </div>
+</main>
+ 
 
 <router-outlet></router-outlet>

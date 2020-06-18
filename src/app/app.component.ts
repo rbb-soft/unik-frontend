@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
       }
     )
   }
-  openDialog(item){
+  addToCart(item){
     let dialogRef = this.dialog.open(PupupComponent,{data:{producto:item}});
 
     dialogRef.afterClosed().subscribe(result => {

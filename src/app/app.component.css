@@ -1,5 +1,5 @@
 .card{
-    width: 19%;
+    width: 18%;
     float: left;
     margin-left: 25px;
 }
@@ -10,4 +10,8 @@
 .clear{
     clear: both;
 }
-
+.container{
+    text-align: center;
+    padding-left: 5%;
+    margin: auto;
+}
