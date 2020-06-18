@@ -1,0 +1,16 @@
+img{
+    width: 33%;
+    height: 33%;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+.red{
+    color:red;
+}
+.text-left{
+    text-align: left;
+}

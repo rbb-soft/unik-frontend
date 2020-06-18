@@ -1,0 +1,13 @@
+.card{
+    width: 19%;
+    float: left;
+    margin-left: 25px;
+}
+.img-card{
+    width: 66%;
+    height: 66%;
+}
+.clear{
+    clear: both;
+}
+
