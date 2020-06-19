@@ -45,7 +45,14 @@
             <mat-card-title>{{producto.nombre}}</mat-card-title>
             <mat-card-subtitle><h3>${{producto.precio}}ARS</h3></mat-card-subtitle>
           </mat-card-header>
-          <img class="img-card" mat-card-image src="//localhost/unicasport/administracion/{{producto.imagen}}" alt="{{producto.nombre}}">
+         <div class="container">
+           <div class="row">
+            <div class="col-md-12 text-center">
+              <img class="img-fluid" mat-card-image src="//localhost/administracion/{{producto.imagen}}" alt="{{producto.nombre}}">
+            </div>
+            
+           </div>
+         </div>
           <mat-card-content>
             
           </mat-card-content>
