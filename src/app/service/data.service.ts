@@ -10,6 +10,6 @@ export class DataService {
   constructor(private http:HttpClient) { }
 
   getProductos(){
-    return this.http.get<I_productos[]>('http://localhost/nucleo/model/crud.php');
+    return this.http.get<I_productos[]>('http://localhost/nucleo/model/list.php');
   }
 }
