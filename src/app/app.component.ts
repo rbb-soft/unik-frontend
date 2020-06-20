@@ -17,16 +17,38 @@ export class AppComponent implements OnInit{
 
   constructor(public dialog: MatDialog, public productos:DataService){}
 
+  getStorageCart(){
+    return JSON.parse(localStorage.getItem("Items")) != null ? JSON.parse(localStorage.getItem("Items")) : [];
+  }
+  getStorageTotalCartItems(){
+    return JSON.parse(localStorage.getItem("cartTotalItems")) != null ? JSON.parse(localStorage.getItem("cartTotalItems")) : 0;
+  }
   ngOnInit(){
     this.productos.getProductos().subscribe(
       productos => {
         this.Dproductos=productos;
       }
-    )
+    );
+      this.Dcarrito=this.getStorageCart();
+      this.cartTotalItems=this.getStorageTotalCartItems();
   }
+
+ 
   addToCart(item){
+    let checkDuplicate:boolean=false;
+    
+    if(this.cartTotalItems > 0){
+      for(let itemCart of this.Dcarrito){
+        if(item.id == itemCart.id){
+          alert('El producto ya esta incluido en el Carrito\nPuedes elegir la cantidad luego en el carrito!');
+          return;
+        }
+      }
+    }
     this.Dcarrito.push(item);
     this.cartTotalItems=this.Dcarrito.length;
+    localStorage.setItem('Items',JSON.stringify(this.Dcarrito));
+    localStorage.setItem('cartTotalItems',JSON.stringify(this.cartTotalItems));
 
     // Open Modal
     let dialogRef = this.dialog.open(PupupComponent,{data:{producto:item}});
