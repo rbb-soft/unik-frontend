@@ -1,0 +1,8 @@
+::ng-deep.mat-menu-panel {
+    max-width: 350px !important;
+    padding:5px;
+  }
+.scroll-350{
+  max-height: 350px;
+  overflow: auto;
+}

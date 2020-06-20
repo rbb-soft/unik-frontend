@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatMenuModule} from '@angular/material/menu'; 
+import { AppComponent } from '../app.component';
+
 @Component({
   selector: 'app-index-menu-cart',
   templateUrl: './index-menu-cart.component.html',
@@ -7,9 +9,10 @@ import {MatMenuModule} from '@angular/material/menu';
 })
 export class IndexMenuCartComponent implements MatMenuModule {
 
-  constructor() { }
+  constructor(public myapp: AppComponent) { }
 
-  ngOnInit(): void {
+  vaciarCarrito(){
+    this.myapp.vaciarCarritoMain();
   }
 
 }

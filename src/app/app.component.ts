@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { PupupComponent } from './pupup/pupup.component';
 import { DataService } from './service/data.service';
 import { I_productos } from './models/productos.interface';
-import { I_Carrito } from './models/carrito.interface';
+
 
 @Component({
   selector: 'app-root',
@@ -23,6 +23,16 @@ export class AppComponent implements OnInit{
   getStorageTotalCartItems(){
     return JSON.parse(localStorage.getItem("cartTotalItems")) != null ? JSON.parse(localStorage.getItem("cartTotalItems")) : 0;
   }
+  dropStorage(){
+   localStorage.clear();
+  }
+  vaciarCarritoMain(){
+    console.log('vaciando carrito desde main');
+    this.Dcarrito=[];
+    this.cartTotalItems=0;
+    this.dropStorage(); 
+  } 
+
   ngOnInit(){
     this.productos.getProductos().subscribe(
       productos => {
