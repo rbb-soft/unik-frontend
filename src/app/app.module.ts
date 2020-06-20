@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { PupupComponent } from './pupup/pupup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IndexMenuCartComponent } from './index-menu-cart/index-menu-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PupupComponent
+    PupupComponent,
+    IndexMenuCartComponent
   ],
   entryComponents:[PupupComponent],
   imports: [
