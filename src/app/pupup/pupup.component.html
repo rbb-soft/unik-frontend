@@ -4,17 +4,20 @@
         <div class="row">
             <div class="col-md-3">
                 <img  class="img-fluid" [src]="'//localhost/administracion/' +data.producto.imagen" alt="">
-            </div>
+            </div><!-- /div:col-md-3-->
             <div class="col-md-2 text-left">
                 <h2>{{data.producto.nombre}}</h2>
                 <h3>{{data.producto.precio}}</h3>                
-            </div>
+            </div><!-- /div:col-md-2 text-left-->
             <div class="col-md-4 text-left">
                 <p>{{data.producto.descripcion}}</p>
                 Categoria<span>: <i>{{data.producto.categoria}}</i></span>
-            </div>
-        </div>
-    </div>
+            </div><!-- /div:col-md-3 text-left-->
+            <div class="col-md-1">
+                Stock:{{data.producto.stock}}
+            </div><!-- /div:col-md-2-->
+        </div><!-- /div:row-->
+    </div><!-- /div:-->
     
 </mat-dialog-content>
 <mat-dialog-actions align="end">

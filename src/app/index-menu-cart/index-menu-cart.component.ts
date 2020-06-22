@@ -9,10 +9,10 @@ import { AppComponent } from '../app.component';
 })
 export class IndexMenuCartComponent implements MatMenuModule {
 
-  constructor(public myapp: AppComponent) { }
+  constructor(public appRoot: AppComponent) { }
 
   vaciarCarrito(){
-    this.myapp.vaciarCarritoMain();
+    this.appRoot.vaciarCarritoMain();
   }
 
 }

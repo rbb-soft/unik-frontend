@@ -2,20 +2,20 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <h3 class="text-muted" *ngIf='myapp.Dcarrito.length > 0' class="text-center">Productos en el Carrito</h3>
-    <h3 class="text-muted" *ngIf='myapp.Dcarrito.length == 0' class="text-center">No hay Productos en el Carrito!</h3>
+    <h3 class="text-muted" *ngIf='appRoot.Dcarrito.length > 0' class="text-center">Productos en el Carrito</h3>
+    <h3 class="text-muted" *ngIf='appRoot.Dcarrito.length == 0' class="text-center">No hay Productos en el Carrito!</h3>
     <div class="container-fluid scroll-350">
-      <div class="row" *ngFor='let producto of myapp.Dcarrito'>
+      <div class="row" *ngFor='let producto of appRoot.Dcarrito'>
             <div class="col-md-4">
               <img class="img-fluid" src="//localhost/administracion/{{producto.imagen}}" alt="{{producto.nombre}}">
             </div>
             <div class="col-md-8 text-left">
               <small class="text-muted"> {{producto.nombre}} ${{producto.precio}}ARS</small>
             </div>
-      </div>
-    </div>
+      </div><!-- /div:row-->
+    </div><!-- /div:container-fluid scroll-350-->
     <hr/>
-    <span *ngIf='myapp.Dcarrito.length > 0'>
+    <span *ngIf='appRoot.Dcarrito.length > 0'>
       <button mat-flat-button color="accent">
         Ir Al Carrito
       </button>

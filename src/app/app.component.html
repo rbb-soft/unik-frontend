@@ -35,47 +35,5 @@
   </mat-toolbar>
   
 </header>
-<main>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h1>Tienda de Compras</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3" *ngFor="let producto of Dproductos">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>{{producto.nombre}}</mat-card-title>
-            <mat-card-subtitle><h3>${{producto.precio}}ARS</h3></mat-card-subtitle>
-          </mat-card-header>
-         <div class="container">
-           <div class="row">
-            <div class="col-md-12 text-center">
-              <img class="img-fluid" mat-card-image src="//localhost/administracion/{{producto.imagen}}" alt="{{producto.nombre}}">
-            </div>
-            
-           </div>
-         </div>
-          <mat-card-content>
-            
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-flat-button color="accent"
-            (click)="addToCart(producto)">
-              Agregar al Carrito
-            </button>
-          </mat-card-actions> 
-        </mat-card>
-      </div><!-- / div:col-md-4 -->
-    </div><!-- / div:row -->
-  
-    
-    
-    
-    
-  </div><!-- / div:container -->
-</main>
- 
 
 <router-outlet></router-outlet>

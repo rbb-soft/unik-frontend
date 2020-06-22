@@ -8,12 +8,14 @@ import { MaterialModule } from './material/material.module';
 import { PupupComponent } from './pupup/pupup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexMenuCartComponent } from './index-menu-cart/index-menu-cart.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PupupComponent,
-    IndexMenuCartComponent
+    IndexMenuCartComponent,
+    HomeComponent
   ],
   entryComponents:[PupupComponent],
   imports: [
