@@ -31,7 +31,7 @@
                     </span><small>ARS</small>
                 </div><!--/div:col md 2 text-left center-->
                 <div class="col-md-2  text-left center">
-                        Subtotal:<br>${{carrito.subtotal}}ARS
+                        Subtotal:<br>${{carrito.subtotal | number}}ARS
                 </div><!--/div:col md 2 text-left center-->
 
                 <div class="col-md-2  text-left center">
@@ -43,8 +43,61 @@
             </div><!--/div:row-->
         </div><!--/div:col-md-8-->
 
+        <!-- VISTA DETALLE-->
         <div class="col-md-4">
-
+            <ul class="list-group">
+                <li class="list-group-item"><h1 class="col-md-12 text-center text-muted">Resumen de Compra</h1></li>
+                <li class="list-group-item text-left">
+                    <p>Cantidad de Articulos: {{getTotalItemsWithSubtotal()}} </p>
+                    <p>Precio Total <small>(IVA Incluido)</small>: ${{getTotalPriceItemsWithSubtotal() | number}}<small>ARS</small> </p>
+                </li>
+                <li class="list-group-item">
+                    <div class="row center">
+                        <div class="col">
+                            <label class="text-muted" for="postalC">Ingrese Codigo Postal para Calcular envio!</label>
+                        <input  type="number" 
+                                class="form-control"
+                                name="postalC"
+                                [(ngModel)]='codigoPostal'
+                                
+                        >
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary center"
+                                (click)='getCostoEnvio(this.codigoPostal)'
+                            >
+                             Calcular Envio&nbsp;<mat-icon class="mat-icon25">local_shipping</mat-icon>&nbsp; 
+                        </button>
+                        </div>
+                        <div class="col-md-12 text-left" *ngIf='costoEnvio > 0'>
+                            <br/>
+                            <p>Costo y tiempo de envio: <span class="text-muted">${{costoEnvio | number }}ARS</span></p>   
+                            <p class="resultadoCostoEnvio">{{ tiempoDeEnvioEstimado }}</p>
+                        </div>
+                    </div><!--/div:row-->
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        
+                        <br/>
+                        <div class="col">
+                        <button class="btn btn-info center" [routerLink]="['']">
+                            Volver<mat-icon class="mat-icon25">keyboard_return</mat-icon> 
+                        </button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-success center" [routerLink]="['']">
+                                Finalizar<mat-icon class="mat-icon25">shopping_cart</mat-icon>
+                            </button>
+                        </div>
+                            
+                            
+                    </div>
+                    
+                </li>
+            </ul>
         </div><!--/div:col-md-4-->
+         <!-- FIN DE VISTA DETALLE-->
     </div><!--/div:row-->
+    
 </div><!--/div:container-fluid-->

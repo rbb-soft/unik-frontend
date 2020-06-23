@@ -26,6 +26,7 @@ export class AppComponent implements OnInit{
   dropStorage(){
    localStorage.clear();
   }
+ 
   vaciarCarritoMain(){
     console.log('vaciando carrito desde main');
     this.Dcarrito=[];
@@ -42,10 +43,16 @@ export class AppComponent implements OnInit{
       this.Dcarrito=this.getStorageCart();
       this.cartTotalItems=this.getStorageTotalCartItems();
   }
+
+  getCurrentRoute(url){
+    return ((window.location.href).split('/')[(window.location.href).split('/').length -1]) == url;
+  }
+
+  
   
  
   addToCart(item:I_productos){
-    let checkDuplicate:boolean=false;
+    
     
     if(this.cartTotalItems > 0){
       for(let itemCart of this.Dcarrito){

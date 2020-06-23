@@ -8,6 +8,6 @@ export interface I_productos{
     "descripcion":string;
     "activa":number;
     "precio":number;
-    "cantidad":number;
+    "cantidad":any;
     "subtotal":any;
 }

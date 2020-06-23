@@ -18,7 +18,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     PupupComponent,
     IndexMenuCartComponent,
     HomeComponent,
-    CarritoComponent
+    CarritoComponent,
+    
   ],
   entryComponents:[PupupComponent],
   imports: [

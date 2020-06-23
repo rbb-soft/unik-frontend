@@ -1,4 +1,5 @@
-.center {
+@media (min-width: 768px) { 
+  .center {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
@@ -9,12 +10,26 @@
 
     align-items: center;
   }
+ }
+
   .mat-icon {
     font-size: 40px;
+  }
+  .mat-icon25{
+    font-size: 25px;
+  }
+
+  .borderBotton{
+    border-bottom: 1px #ddd solid;
   }
   .cursorP{
     cursor: pointer;
   }
-  .borderBotton{
-    border-bottom: 1px #ddd solid;
+  .resultadoCostoEnvio{
+    font-style: italic;
+    color: green;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
   }
+  
+  

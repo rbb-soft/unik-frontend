@@ -17,8 +17,7 @@ export class HomeComponent implements OnInit {
       
       if(element.width < element.height) {
        element.className = 'imgMaxHeight';
-       console.log('cambiando...');
-     }
+      }
     }
     
   }
