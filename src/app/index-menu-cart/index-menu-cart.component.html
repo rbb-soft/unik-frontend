@@ -16,9 +16,9 @@
     </div><!-- /div:container-fluid scroll-350-->
     <hr/>
     <span *ngIf='appRoot.Dcarrito.length > 0'>
-      <button mat-flat-button color="accent">
+      <a mat-flat-button color="accent" [routerLink]="['carrito']" >
         Ir Al Carrito
-      </button>
+      </a>
       <button mat-flat-button color="warn"
         (click)='vaciarCarrito()'>
         Vaciar Carrito

@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,13 +10,15 @@ import { PupupComponent } from './pupup/pupup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexMenuCartComponent } from './index-menu-cart/index-menu-cart.component';
 import { HomeComponent } from './home/home.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PupupComponent,
     IndexMenuCartComponent,
-    HomeComponent
+    HomeComponent,
+    CarritoComponent
   ],
   entryComponents:[PupupComponent],
   imports: [
@@ -23,7 +26,9 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

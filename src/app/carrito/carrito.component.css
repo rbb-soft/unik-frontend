@@ -1,0 +1,20 @@
+.center {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+  }
+  .mat-icon {
+    font-size: 40px;
+  }
+  .cursorP{
+    cursor: pointer;
+  }
+  .borderBotton{
+    border-bottom: 1px #ddd solid;
+  }

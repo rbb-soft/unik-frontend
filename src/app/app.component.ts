@@ -42,9 +42,9 @@ export class AppComponent implements OnInit{
       this.Dcarrito=this.getStorageCart();
       this.cartTotalItems=this.getStorageTotalCartItems();
   }
-
+  
  
-  addToCart(item){
+  addToCart(item:I_productos){
     let checkDuplicate:boolean=false;
     
     if(this.cartTotalItems > 0){
@@ -55,6 +55,8 @@ export class AppComponent implements OnInit{
         }
       }
     }
+    item.cantidad=1;
+    item.subtotal=item.precio;
     this.Dcarrito.push(item);
     this.cartTotalItems=this.Dcarrito.length;
     localStorage.setItem('Items',JSON.stringify(this.Dcarrito));
