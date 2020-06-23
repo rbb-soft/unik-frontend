@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IndexMenuCartComponent } from './index-menu-cart/index-menu-cart.component';
 import { HomeComponent } from './home/home.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CarritoComponent } from './carrito/carrito.component';
     IndexMenuCartComponent,
     HomeComponent,
     CarritoComponent,
+    FinalizarCompraComponent,
     
   ],
   entryComponents:[PupupComponent],

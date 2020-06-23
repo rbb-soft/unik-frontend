@@ -1,53 +1,11 @@
-<div class="container-fluid">
-    <div class="row text-center">
-        <h1 class="col-md-12">Carrito de Compras (Checkout)</h1>
-    </div><!--/div row-->
+
+<div class="container-fluid mt-5">
     <div class="row">
         <div class="col-md-8">
-            <div class="row" *ngIf="appRoot.Dcarrito.length == 0">
-                <h1 class="alert alert-danger col-md-12 text-center">
-                    No hay Productos en el carrito
-                </h1>
-            </div>
-            <div class="row borderBotton" *ngFor="let carrito of appRoot.Dcarrito; let $index=index">
-                <div class="col-md-2 text center">
-                    <img class="img-fluid" src="//localhost/administracion/{{carrito.imagen}}" alt="{{carrito.imagen}}">
-                </div><!--/div:col md 2 center-->
-                <div class="col-md-3 text-left center">
-                    {{carrito.nombre}}
-                </div><!--/div:col md 4 text-left center-->
-                <div class="col-md-1 text-left center">
-                    <div class="form-group">
-                        <label for="cant">Cantidad</label>
-                        <input  type="number"
-                                name="cant"
-                                class="form-control"
-                                min="1"
-                                max="{{carrito.stock}}"
-                                [(ngModel)]="carrito.cantidad"
-                                (change)='getSubtotal($index,carrito.precio,carrito.cantidad)'
-                                
-                        >
-                    </div>
-                </div><!--/div:col md 2 text-left center-->
-                <div class="col-md-2  text-left center">
-                    $<span class="text-muted">
-                        {{carrito.precio}}
-                    </span><small>ARS</small>
-                </div><!--/div:col md 2 text-left center-->
-                <div class="col-md-2  text-left center">
-                        Subtotal:<br>${{carrito.subtotal | number}}ARS
-                </div><!--/div:col md 2 text-left center-->
 
-                <div class="col-md-2  text-left center">
-                    <mat-icon class="mat-icon cursorP" (click)='delItem($index)'>
-                        delete_forever
-                    </mat-icon>
-            </div><!--/div:col md 2 text-left center-->
-                
-            </div><!--/div:row-->
-        </div><!--/div:col-md-8-->
-
+        </div>
+        <!-- *************************************************************************************-->
+        <!-- *************************************************************************************-->
         <!-- VISTA DETALLE-->
         <div class="col-md-4">
             <ul class="list-group" *ngIf="appRoot.Dcarrito.length == 0">
@@ -94,17 +52,14 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        
-                        <br/>
+                                               <br/>
                         <div class="col">
-                        <button class="btn btn-info center" [routerLink]="['']">
+                        <button class="btn btn-info center" [routerLink]="['../carrito']">
                             Volver<mat-icon class="mat-icon25">keyboard_return</mat-icon> 
                         </button>
                         </div>
                         <div class="col">
-                            <button class="btn btn-success center" [routerLink]="['../finalizarCompra']">
-                                Finalizar<mat-icon class="mat-icon25">shopping_cart</mat-icon>
-                            </button>
+                            
                         </div>
                             
                             
@@ -114,6 +69,8 @@
             </ul>
         </div><!--/div:col-md-4-->
          <!-- FIN DE VISTA DETALLE-->
-    </div><!--/div:row-->
-    
-</div><!--/div:container-fluid-->
+         <!-- *************************************************************************************-->
+         <!-- *************************************************************************************-->
+
+    </div>
+</div>
