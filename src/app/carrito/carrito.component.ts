@@ -9,7 +9,7 @@ import { AppComponent } from '../app.component';
 export class CarritoComponent implements OnInit {
 
   codigoPostal:number=0;
-  costoEnvio:number;
+  costoEnvio:number=0;
   tiempoDeEnvioEstimado:string;
   meses:string[] = ["Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio","Julio","Agosto", "Septiembre","Noviembre","Diciembre"];
 

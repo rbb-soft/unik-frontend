@@ -1,9 +1,14 @@
 <div class="container-fluid">
     <div class="row text-center">
-        <h1 class="col-md-12">Carrito</h1>
+        <h1 class="col-md-12">Carrito de Compras (Checkout)</h1>
     </div><!--/div row-->
     <div class="row">
         <div class="col-md-8">
+            <div class="row" *ngIf="appRoot.Dcarrito.length == 0">
+                <h1 class="alert alert-danger col-md-12 text-center">
+                    No hay Productos en el carrito
+                </h1>
+            </div>
             <div class="row borderBotton" *ngFor="let carrito of appRoot.Dcarrito; let $index=index">
                 <div class="col-md-2 text center">
                     <img class="img-fluid" src="//localhost/administracion/{{carrito.imagen}}" alt="{{carrito.imagen}}">
@@ -45,7 +50,17 @@
 
         <!-- VISTA DETALLE-->
         <div class="col-md-4">
-            <ul class="list-group">
+            <ul class="list-group" *ngIf="appRoot.Dcarrito.length == 0">
+                <li class="list-group-item">
+                    <h1 class="col-md-12 text-center center">
+                        Carrito Vacio!
+                    </h1>
+                    <button class="btn btn-info center" [routerLink]="['']">
+                        Volver<mat-icon class="mat-icon25">keyboard_return</mat-icon> 
+                    </button>
+                </li>
+            </ul>
+            <ul class="list-group" *ngIf="appRoot.Dcarrito.length > 0">
                 <li class="list-group-item"><h1 class="col-md-12 text-center text-muted">Resumen de Compra</h1></li>
                 <li class="list-group-item text-left">
                     <p>Cantidad de Articulos: {{getTotalItemsWithSubtotal()}} </p>
@@ -65,14 +80,15 @@
                         <div class="col">
                             <button class="btn btn-primary center"
                                 (click)='getCostoEnvio(this.codigoPostal)'
+                                [disabled]="this.codigoPostal == 0  || this.codigoPostal == null" 
                             >
                              Calcular Envio&nbsp;<mat-icon class="mat-icon25">local_shipping</mat-icon>&nbsp; 
                         </button>
                         </div>
                         <div class="col-md-12 text-left" *ngIf='costoEnvio > 0'>
                             <br/>
-                            <p>Costo y tiempo de envio: <span class="text-muted">${{costoEnvio | number }}ARS</span></p>   
-                            <p class="resultadoCostoEnvio">{{ tiempoDeEnvioEstimado }}</p>
+                            <p class="text-muted">Costo: <span class="text-dark">${{costoEnvio | number }}ARS</span></p>   
+                            <p class="resultadoCostoEnvio"><span class="text-muted">tiempo de envio:</span> {{ tiempoDeEnvioEstimado }}</p>
                         </div>
                     </div><!--/div:row-->
                 </li>
