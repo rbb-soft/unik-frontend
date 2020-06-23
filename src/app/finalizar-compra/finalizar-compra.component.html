@@ -1,8 +1,40 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-md-8">
-
+        <div class="col-md-8 text-left">
+            <mat-horizontal-stepper>
+                <mat-step label='Datos Personales'>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae neque iusto temporibus maiores, 
+                        excepturi nam ad. Cumque mollitia saepe doloribus, 
+                        voluptate odit obcaecati eligendi eveniet. Illum et esse aspernatur voluptatibus!</p>
+                    <div>
+                        <button mat-raised-button matStepperNext>
+                            Direcciones
+                        </button>
+                    </div>
+                </mat-step>
+                <mat-step label='Direcciones'>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae neque iusto temporibus maiores, 
+                        excepturi nam ad. Cumque mollitia saepe doloribus, 
+                        voluptate odit obcaecati eligendi eveniet. Illum et esse aspernatur voluptatibus!</p>
+                    <div>
+                        <button mat-raised-button matStepperPrevious>Datos Personales</button>
+                        <button mat-raised-button matStepperNext>Envio</button>
+                    </div>
+                </mat-step>
+                <mat-step label='Envio'>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae neque iusto temporibus maiores, 
+                        excepturi nam ad. Cumque mollitia saepe doloribus, 
+                        voluptate odit obcaecati eligendi eveniet. Illum et esse aspernatur voluptatibus!</p>
+                    <div>
+                        <button mat-raised-button matStepperPrevious>Direcciones</button>
+                        <button mat-raised-button matStepperNext>Pago</button>
+                    </div>
+                </mat-step>
+                <mat-step label='Pago'>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia delectus vero quae consequuntur eveniet facere consequatur odit dolores, enim commodi eligendi, at nisi nihil atque molestiae et, minus ducimus quibusdam.</p>
+                </mat-step>
+            </mat-horizontal-stepper>
         </div>
         <!-- *************************************************************************************-->
         <!-- *************************************************************************************-->
