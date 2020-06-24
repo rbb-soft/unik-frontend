@@ -3,6 +3,7 @@ import { MatDialog} from '@angular/material/dialog';
 import { PupupComponent } from './pupup/pupup.component';
 import { DataService } from './service/data.service';
 import { I_productos } from './models/productos.interface';
+import { I_pedido } from './models/Pedido.interface';
 
 
 @Component({
@@ -16,6 +17,23 @@ export class AppComponent implements OnInit{
   cartTotalItems:number=0;
 
   constructor(public dialog: MatDialog, public productos:DataService){}
+
+  ngOnInit(){
+    this.productos.getProductos().subscribe(
+      productos => {
+        this.Dproductos=productos;
+      }
+    );
+      this.Dcarrito=this.getStorageCart();
+      this.cartTotalItems=this.getStorageTotalCartItems();
+  }
+
+  setPedidoMainApp(pedido:I_pedido){
+    this.productos.setPedidoService(pedido).subscribe(
+      pedido => {console.log(pedido)},
+      error => alert('hubo un error inesperado\nPor favor contacte al administrador!')
+    );
+  }
 
   getStorageCart(){
     return JSON.parse(localStorage.getItem("Items")) != null ? JSON.parse(localStorage.getItem("Items")) : [];
@@ -34,15 +52,7 @@ export class AppComponent implements OnInit{
     this.dropStorage(); 
   } 
 
-  ngOnInit(){
-    this.productos.getProductos().subscribe(
-      productos => {
-        this.Dproductos=productos;
-      }
-    );
-      this.Dcarrito=this.getStorageCart();
-      this.cartTotalItems=this.getStorageTotalCartItems();
-  }
+  
 
   getCurrentRoute(url){
     return ((window.location.href).split('/')[(window.location.href).split('/').length -1]) == url;

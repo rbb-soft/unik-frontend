@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { I_pedido } from '../models/Pedido.interface';
 
 @Component({
   selector: 'app-finalizar-compra',
@@ -8,16 +9,79 @@ import { AppComponent } from '../app.component';
 })
 export class FinalizarCompraComponent implements OnInit {
 
-
-  codigoPostal:number=0;
-  costoEnvio:number=0;
-  tiempoDeEnvioEstimado:string;
-  meses:string[] = ["Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio","Julio","Agosto", "Septiembre","Noviembre","Diciembre"];
-
+  // globales
   constructor(public appRoot:AppComponent) { }
 
   ngOnInit(): void {
   }
+
+  // propiedades y metodos de esta clase
+  Pedido:I_pedido={
+    nombre:'',
+    apellido:'',
+    email:'',
+    contrasenia:'',
+    empresa:'',
+    cuitCuilDni:0,
+    direccion:'',
+    numero:0,
+    codigoPostal:0,
+    ciudad:'',
+    provincia:'',
+    pais:'',
+    telefono:'',
+    esDireccionParaFacturacion:true
+
+  };
+  step1:boolean=false;
+  step2:boolean=false;
+  step3:boolean=false;
+  step4:boolean=false;
+
+  paso1(){
+    if(this.Pedido.contrasenia ===''){
+      console.log('como invitado');
+    }else{
+      console.log('registrar');
+      
+    }
+  }
+  paso2(){
+
+  }
+  paso3(){
+
+  }
+
+  ahorroDetipeo(){
+    this.Pedido={
+      nombre:'Richard',
+      apellido:'Barolin',
+      email:'a@a.a',
+      contrasenia:'123456',
+      empresa:'RBB',
+      cuitCuilDni:1234567890,
+      direccion:'av popo',
+      numero:1234,
+      codigoPostal:1744,
+      ciudad:'Moreno',
+      provincia:'Buenos Aires',
+      pais:'Argentina',
+      telefono:'123456789',
+      esDireccionParaFacturacion:true
+    };
+  }
+
+  setPedido(){
+    localStorage.setItem('Pedido',JSON.stringify(this.Pedido));
+    //this.appRoot.setPedidoMainApp(this.Pedido);
+  }
+
+  // mismos metodos y propiedades que en carrito, para mostrar Resumen de compra
+  codigoPostal:number=0;
+  costoEnvio:number=0;
+  tiempoDeEnvioEstimado:string;
+  meses:string[] = ["Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio","Julio","Agosto", "Septiembre","Noviembre","Diciembre"];
 
   getSubtotal(id,precio,cantidad){
     this.appRoot.Dcarrito[id].subtotal=(parseFloat(precio)*cantidad);
