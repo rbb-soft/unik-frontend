@@ -20,4 +20,7 @@ export class DataService {
   setPedidoService(pedido:I_pedido){
     return this.http.post<any>('http://localhost/nucleo/model/createPedido.php', pedido);
   }
+  getLoginService(user:string,pass:string){
+    return this.http.post<I_pedido>('http://localhost/nucleo/model/getLogin.php', {'user':user,'pass':pass});
+  }
 }
