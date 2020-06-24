@@ -9,7 +9,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatStepperModule} from '@angular/material/stepper'; 
 import {MatTabsModule} from '@angular/material/tabs';  
 import {MatInputModule} from '@angular/material/input'; 
-import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatRadioModule} from '@angular/material/radio'; 
 
 const ModulesMaterial= [
   MatDialogModule,
@@ -22,7 +24,9 @@ const ModulesMaterial= [
   MatStepperModule,
   MatTabsModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatCheckboxModule,
+  MatRadioModule
 ];
 
 

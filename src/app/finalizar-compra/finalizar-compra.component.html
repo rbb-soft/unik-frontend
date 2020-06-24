@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-md-8 text-left">
             <mat-horizontal-stepper>
+                <!--<mat-step label='Datos Personales'>--------------------------------------------->
                 <mat-step label='Datos Personales'>
-                   <!-- STEP PAGO----------------------------------------------------------------------->
                    <mat-tab-group dynamicHeight>
                     <mat-tab label="Iniciar Sesion">
                         
@@ -104,27 +104,157 @@
                         </button>
                     </div>
                 </mat-step>
+                <!--</mat-step label='Datos Personales'>-------------------------------------------->
+                <!-- *************************************************************************************-->
+                <!--<mat-step label='Direcciones'>-------------------------------------------------->
                 <mat-step label='Direcciones'>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae neque iusto temporibus maiores, 
-                        excepturi nam ad. Cumque mollitia saepe doloribus, 
-                        voluptate odit obcaecati eligendi eveniet. Illum et esse aspernatur voluptatibus!</p>
+                    <div class="container fluid">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h1>Direccion para Facturacion</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Empresa</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>CUIT/CUIL/DNI</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Direccion</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Codigo Postal/Zip</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Ciudad</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Provincia</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Pais</mat-label>
+                                    <input matInput required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Telefono</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 text-left text-muted">
+                                <mat-checkbox>Utilizar esta dirección para facturas también</mat-checkbox>
+
+                            </div>
+                        </div>
+                    </div>
                     <div>
-                        <button mat-raised-button matStepperPrevious>Datos Personales</button>
-                        <button mat-raised-button matStepperNext>Envio</button>
+                        <button color='warn' mat-raised-button matStepperPrevious>Volver</button>&nbsp;
+                        <button color='accent' mat-raised-button matStepperNext>Continuar</button>
                     </div>
                 </mat-step>
+                <!--</mat-step label='Direcciones'>------------------------------------------------->
+                <!-- *************************************************************************************-->
+                <!--<mat-step label='Envio'>-------------------------------------------------------->
                 <mat-step label='Envio'>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae neque iusto temporibus maiores, 
-                        excepturi nam ad. Cumque mollitia saepe doloribus, 
-                        voluptate odit obcaecati eligendi eveniet. Illum et esse aspernatur voluptatibus!</p>
+                    <div class="container-fluid">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label><h1>Metodo de envio</h1></label>
+                                <mat-radio-group
+                                    aria-labelledby="example-radio-group-label"
+                                    class="radio-group">
+                                    <mat-radio-button class="radio-button" value="mercadoEnvio">
+                                        Mercado Envios
+                                    </mat-radio-button>
+                                    <mat-radio-button class="radio-button" value="encomienda">
+                                        Encomiendas
+                                    </mat-radio-button>
+                                    <mat-radio-button class="radio-button" value="retiroFabrica">
+                                        Retiro en Fabrica
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            
+
+                        </div>
+                    </div>
                     <div>
-                        <button mat-raised-button matStepperPrevious>Direcciones</button>
-                        <button mat-raised-button matStepperNext>Pago</button>
+                        <button color='warn' mat-raised-button matStepperPrevious>Volver</button>&nbsp;
+                        <button color='accent' mat-raised-button matStepperNext>Continuar</button>
                     </div>
                 </mat-step>
+                <!--</mat-step label='Envio'>------------------------------------------------------->
+                <!-- *************************************************************************************-->
+                <!--<mat-step label='Pago'>--------------------------------------------------------->
                 <mat-step label='Pago'>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia delectus vero quae consequuntur eveniet facere consequatur odit dolores, enim commodi eligendi, at nisi nihil atque molestiae et, minus ducimus quibusdam.</p>
+                    <div class="container-fluid">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label><h1>Metodo de Pago</h1></label>
+                                <mat-radio-group
+                                    aria-labelledby="example-radio-group-label"
+                                    class="radio-group">
+                                    <mat-radio-button class="radio-button" value="mercadoPago">
+                                        Mercado Pago
+                                    </mat-radio-button>
+                                    <mat-radio-button class="radio-button" value="bancaria">
+                                        Transferencia Bancaria
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </div>
                 </mat-step>
+                <!--</mat-step label='Pago'>-------------------------------------------------------->
+                <!-- *************************************************************************************-->
+                <!-- *************************************************************************************-->
+                <!-- *************************************************************************************-->
             </mat-horizontal-stepper>
         </div>
         <!-- *************************************************************************************-->
