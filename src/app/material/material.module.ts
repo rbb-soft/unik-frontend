@@ -6,7 +6,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu'; 
-import {MatStepperModule} from '@angular/material/stepper';  
+import {MatStepperModule} from '@angular/material/stepper'; 
+import {MatTabsModule} from '@angular/material/tabs';  
+import {MatInputModule} from '@angular/material/input'; 
+import {MatFormFieldModule} from '@angular/material/form-field'
 
 const ModulesMaterial= [
   MatDialogModule,
@@ -16,7 +19,10 @@ const ModulesMaterial= [
   MatIconModule,
   MatBadgeModule,
   MatMenuModule,
-  MatStepperModule
+  MatStepperModule,
+  MatTabsModule,
+  MatInputModule,
+  MatFormFieldModule
 ];
 
 
