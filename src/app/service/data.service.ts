@@ -18,7 +18,7 @@ export class DataService {
     return this.http.get<any>('https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1744&zip_code_to=' + cp + '&dimensions=70x70x70,1500');
   }
   setPedidoService(pedido:I_pedido){
-    return this.http.post<any>('http://localhost/nucleo/model/createPedido.php', pedido);
+    return this.http.post<I_pedido>('http://localhost/nucleo/model/createPedido.php', pedido);
   }
   getLoginService(user:string,pass:string){
     return this.http.post<I_pedido>('http://localhost/nucleo/model/getLogin.php', {'user':user,'pass':pass});

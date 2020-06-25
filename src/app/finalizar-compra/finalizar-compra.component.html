@@ -255,20 +255,25 @@
                                 </mat-form-field>
                             </div>
                         </div>
+                        <!--
                         <div class="row">
                             <div class="col-md-6 text-left text-muted">
-                                <mat-checkbox [(ngModel)]="Pedido.esDireccionParaFacturacion">
-                                    Utilizar esta dirección para facturas también
+                                <mat-checkbox 
+                                    #esDireccionParaFacturacion
+                                    [(ngModel)]="Pedido.esDireccionParaFacturacion"
+                                    (change)="test(esDireccionParaFacturacion)">
+                                        Utilizar esta dirección para facturas también
                                 </mat-checkbox>
 
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div>
                         <button color='warn' mat-raised-button matStepperPrevious>Volver</button>&nbsp;
                         <button color='accent'
                                 mat-raised-button
                                 matStepperNext
+                                (click)="setPedido()"
                                  
                         >
                             Continuar

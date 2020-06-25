@@ -15,6 +15,7 @@ export class FinalizarCompraComponent implements OnInit {
   ngOnInit(){
     this.getPedido();
     this.getCostoEnvio(this.Pedido.codigoPostal);
+    console.log('esDireccionParaFacturacion: ', this.Pedido.esDireccionParaFacturacion); 
   }
   
 
@@ -48,8 +49,9 @@ export class FinalizarCompraComponent implements OnInit {
     this.appRoot.ajaxQuery.getLoginService(user,pass).subscribe(
       login => {
         if(login != null){
+          console.log("login: ",login)
           this.Pedido=login;
-          this.setPedido();
+          this.storePedido();
         }
         else{
           alert('Email o Contraseña incorrecto/a\n\
@@ -63,9 +65,17 @@ export class FinalizarCompraComponent implements OnInit {
     );
   }
   
-  setPedido():void{
+  
+  storePedido():void{
     localStorage.setItem('Pedido',JSON.stringify(this.Pedido));
-    //this.appRoot.setPedidoMainApp(this.Pedido);
+  }
+  setPedido(){
+    this.appRoot.ajaxQuery.setPedidoService(this.Pedido)
+      .subscribe(
+        pedido => {
+          console.log('pedido Service: ',pedido);
+        }
+    );
   }
   getPedido():void{
     this.Pedido= JSON.parse(localStorage.getItem("Pedido")) != null 
@@ -89,6 +99,7 @@ export class FinalizarCompraComponent implements OnInit {
  
   }
   
+ 
   checkNumber(num){
     return isNaN(num.value);
   }
@@ -136,6 +147,7 @@ export class FinalizarCompraComponent implements OnInit {
   }
   
   getCostoEnvio(cp){
+    if(cp == 0)  return;
     let costo:number=0;
     this.appRoot.ajaxQuery.getCostoEnvio(cp).subscribe(
       envio => {
