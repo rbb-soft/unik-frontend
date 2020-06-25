@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
-import { I_pedido } from '../models/Pedido.interface';
+
 
 @Component({
   selector: 'app-finalizar-compra',
@@ -14,6 +14,7 @@ export class FinalizarCompraComponent implements OnInit {
 
   ngOnInit(){
     this.getPedido();
+    this.getCostoEnvio(this.Pedido.codigoPostal);
   }
   
 
@@ -75,12 +76,29 @@ export class FinalizarCompraComponent implements OnInit {
   }
 
   step_1(){
-    let checkPedido:boolean;
-    checkPedido=  (this.Pedido.email !== "") && (this.Pedido.nombre !== "") && 
-                  (this.Pedido.apellido !== "");
-    return checkPedido;
+    return  (this.Pedido.email !== "") && (this.Pedido.nombre !== "") && 
+            (this.Pedido.apellido !== "");
+ 
   }
-
+  step_2(){
+    return  (this.Pedido.nombre !== "")           &&  (this.Pedido.apellido !== "") && 
+            (this.checkEmail(this.Pedido.email))  &&  (this.Pedido.cuitCuilDni > 1000000) && 
+            (this.Pedido.direccion !== "")        &&  (!isNaN(this.Pedido.numero))  &&  
+            (this.Pedido.codigoPostal > 1000)     &&  (this.Pedido.ciudad !== "")  &&
+            (this.Pedido.provincia !== "")        &&  (this.Pedido.pais !== "");
+ 
+  }
+  
+  checkNumber(num){
+    return isNaN(num.value);
+  }
+  checkEmail(email){
+    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return !emailRegex.test(email.value);
+  }
+  mandatory(input){
+    return input.value.length === 0;
+  }
   // mismos metodos y propiedades que en carrito, para mostrar Resumen de compra
   codigoPostal:number=0;
   costoEnvio:number=0;

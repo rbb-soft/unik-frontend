@@ -25,6 +25,9 @@
                                         <mat-form-field>
                                             <mat-label>Ingrese su email</mat-label>
                                             <input matInput required [(ngModel)]="Pedido.email">
+                                            <mat-hint class="text-danger" *ngIf="checkEmail(email)">
+                                                ingrese mail valido!
+                                            </mat-hint>
                                         </mat-form-field>
                                         <mat-form-field>
                                             <mat-label>Ingrese su contraseña</mat-label>
@@ -113,7 +116,7 @@
                 <!--</mat-step label='Datos Personales'>-------------------------------------------->
                 <!-- *************************************************************************************-->
                 <!--<mat-step label='Direcciones'>-------------------------------------------------->
-                <mat-step label='Direcciones' completed="{{step2}}">
+                <mat-step label='Direcciones' completed="{{step_2()}}">
                     <div class="container fluid">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -124,13 +127,42 @@
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Nombre</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.nombre">
+                                    <input matInput required [(ngModel)]="Pedido.nombre" #nombre>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(nombre)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Apellido</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.apellido">
+                                    <input matInput required [(ngModel)]="Pedido.apellido" #apellido>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(apellido)">
+                                        Obligatorio!!
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>Correo electronico</mat-label>
+                                    <input matInput required [(ngModel)]="Pedido.email" #email>
+                                    <mat-hint class="text-danger" *ngIf="checkEmail(email)">
+                                        ingrese mail valido!
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-label>CUIT/CUIL/DNI</mat-label>
+                                    <input matInput required [(ngModel)]="Pedido.cuitCuilDni" #cuitCuilDni>
+                                    <mat-hint class="text-danger" *ngIf="checkNumber(cuitCuilDni)">
+                                        ingrese numeros!
+                                    </mat-hint>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(cuitCuilDni)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -138,33 +170,48 @@
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Empresa</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.email">
+                                    <input matInput [(ngModel)]="Pedido.empresa">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-label>CUIT/CUIL/DNI</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.cuitCuilDni">
+                                    <mat-label>Direccion</mat-label>
+                                    <input matInput required [(ngModel)]="Pedido.direccion" #direccion>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(direccion)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                                <mat-form-field>
-                                    <mat-label>Direccion</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.direccion">
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-4">
+                            
+                            <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Numero</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.numero">
+                                    <input matInput required [(ngModel)]="Pedido.numero" #numero>
+                                    <mat-hint class="text-danger" *ngIf="checkNumber(numero)">
+                                        ingrese numeros!
+                                    </mat-hint>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(numero)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
+
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Codigo Postal/Zip</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.codigoPostal">
+                                    <input 
+                                        matInput 
+                                        required [(ngModel)]="Pedido.codigoPostal"
+                                        (change)="getCostoEnvio(cp.value)" 
+                                        #cp>
+                                    <mat-hint class="text-danger" *ngIf="checkNumber(cp)">
+                                        ingrese numeros!
+                                    </mat-hint>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(cp)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -172,13 +219,19 @@
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Ciudad</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.ciudad">
+                                    <input matInput required [(ngModel)]="Pedido.ciudad" #ciudad>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(ciudad)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Provincia</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.provincia">
+                                    <input matInput required [(ngModel)]="Pedido.provincia" #provincia>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(provincia)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -186,13 +239,19 @@
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Pais</mat-label>
-                                    <input matInput required [(ngModel)]="Pedido.pais">
+                                    <input matInput required [(ngModel)]="Pedido.pais" #pais>
+                                    <mat-hint class="text-danger" *ngIf="mandatory(pais)">
+                                        Obligatorio!!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-label>Telefono</mat-label>
-                                    <input matInput [(ngModel)]="Pedido.telefono">
+                                    <input matInput [(ngModel)]="Pedido.telefono" #telefono>
+                                    <mat-hint class="text-danger" *ngIf="checkNumber(telefono)">
+                                        ingrese numeros!
+                                    </mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
