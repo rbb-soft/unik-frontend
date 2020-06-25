@@ -7,8 +7,8 @@
         <div class="col-md-8 text-left">
             <mat-horizontal-stepper linear>
                 <!--<mat-step label='Datos Personales'>--------------------------------------------->
-                <mat-step label='Datos Personales' completed="{{step1}}">
-                   <mat-tab-group dynamicHeight>
+                <mat-step label='Datos Personales' completed="{{step_1()}}">
+                   <mat-tab-group dynamicHeight [selectedIndex]="matTabChoose">
                     <mat-tab label="Iniciar Sesion">
                         
                         <div class="small-box mat-elevation-z4 text-center">
@@ -102,7 +102,10 @@
                   
                    
                     <div>
-                        <button mat-raised-button matStepperNext class="float-right" color='accent'>
+                        <button mat-raised-button
+                                matStepperNext
+                                class="float-right" 
+                                color='accent'>
                             Continuar
                         </button>
                     </div>
@@ -203,8 +206,6 @@
                         </div>
                     </div>
                     <div>
-                        <button  mat-raised-button (click)=" setPedido()">Debug</button>
-                        <button  mat-raised-button (click)="ahorroDetipeo()">Tipear</button>
                         <button color='warn' mat-raised-button matStepperPrevious>Volver</button>&nbsp;
                         <button color='accent'
                                 mat-raised-button

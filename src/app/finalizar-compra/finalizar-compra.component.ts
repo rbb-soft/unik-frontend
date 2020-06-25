@@ -12,62 +12,73 @@ export class FinalizarCompraComponent implements OnInit {
   // globales
   constructor(public appRoot:AppComponent) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.getPedido();
   }
+  
 
   // propiedades y metodos de esta clase
-  Pedido:I_pedido=this.appRoot.Dpedido;
-  step1:boolean=true;
+  matTabChoose:number=0;
+  step1:boolean=false;
   step2:boolean=false;
   step3:boolean=false;
   step4:boolean=false;
 
-  paso1():void{
-    if(this.Pedido.contrasenia ===''){
-      console.log('como invitado');
-    }else{
-      console.log('registrar');
+  Pedido={
+    nombre:"",
+    apellido:"",
+    email:"",
+    contrasenia:"",
+    empresa:"",
+    cuitCuilDni:0,
+    direccion:"",
+    numero:0,
+    codigoPostal:0,
+    ciudad:"",
+    provincia:"",
+    pais:"",
+    telefono:"",
+    esDireccionParaFacturacion:true
+
+  }
+
+ 
+  checkLogin(user,pass):any{
+    this.appRoot.ajaxQuery.getLoginService(user,pass).subscribe(
+      login => {
+        if(login != null){
+          this.Pedido=login;
+          this.setPedido();
+        }
+        else{
+          alert('Email o Contraseña incorrecto/a\n\
+          Puede comprar sin registrarse como invitado\n\
+          o registrarse completando el formulario en la solapa:\n\n\
+          "Comprar Como Invitado / Registrarse!"');
+          this.matTabChoose=1;
+        }
+      }
       
-    }
-    this.step1=false
-  }
-
-  paso2(){
-
-  }
-  paso3(){
-
-  }
-
-  checkLogin(user,pass){
-   this.appRoot.getLoginMainApp(user,pass);
-   this.Pedido=this.appRoot.Dpedido;
-   console.log('Pedido: ',this.Pedido);
-   console.log('this.appRoot.Dpedido): ',this.appRoot.Dpedido);
+    );
   }
   
-  ahorroDetipeo(){
-    this.Pedido={
-      nombre:'Richard',
-      apellido:'Barolin',
-      email:'a@a.a',
-      contrasenia:'ri94036144',
-      empresa:'RBB',
-      cuitCuilDni:1234567890,
-      direccion:'av popo',
-      numero:1234,
-      codigoPostal:1744,
-      ciudad:'Moreno',
-      provincia:'Buenos Aires',
-      pais:'Argentina',
-      telefono:'123456789',
-      esDireccionParaFacturacion:true
-    };
-  }
-
-  setPedido(){
+  setPedido():void{
     localStorage.setItem('Pedido',JSON.stringify(this.Pedido));
     //this.appRoot.setPedidoMainApp(this.Pedido);
+  }
+  getPedido():void{
+    this.Pedido= JSON.parse(localStorage.getItem("Pedido")) != null 
+                  ?
+                    JSON.parse(localStorage.getItem("Pedido")) 
+                  :   
+                    this.Pedido;
+  }
+
+  step_1(){
+    let checkPedido:boolean;
+    checkPedido=  (this.Pedido.email !== "") && (this.Pedido.nombre !== "") && 
+                  (this.Pedido.apellido !== "");
+    return checkPedido;
   }
 
   // mismos metodos y propiedades que en carrito, para mostrar Resumen de compra
@@ -108,7 +119,7 @@ export class FinalizarCompraComponent implements OnInit {
   
   getCostoEnvio(cp){
     let costo:number=0;
-    this.appRoot.productos.getCostoEnvio(cp).subscribe(
+    this.appRoot.ajaxQuery.getCostoEnvio(cp).subscribe(
       envio => {
         let fecha= new Date(envio.options[0].estimated_delivery_time.date);
         let mes= this.meses[fecha.getMonth()];

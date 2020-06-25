@@ -50,7 +50,7 @@ export class CarritoComponent implements OnInit {
   
   getCostoEnvio(cp){
     let costo:number=0;
-    this.appRoot.productos.getCostoEnvio(cp).subscribe(
+    this.appRoot.ajaxQuery.getCostoEnvio(cp).subscribe(
       envio => {
         let fecha= new Date(envio.options[0].estimated_delivery_time.date);
         let mes= this.meses[fecha.getMonth()];

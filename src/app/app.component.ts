@@ -16,28 +16,10 @@ export class AppComponent implements OnInit{
   Dproductos:I_productos[]=[];
   cartTotalItems:number=0;
 
-  Dpedido:I_pedido={
-    nombre:'',
-    apellido:'',
-    email:'',
-    contrasenia:'',
-    empresa:'',
-    cuitCuilDni:0,
-    direccion:'',
-    numero:0,
-    codigoPostal:0,
-    ciudad:'',
-    provincia:'',
-    pais:'',
-    telefono:'',
-    esDireccionParaFacturacion:true
-
-  };
-
-  constructor(public dialog: MatDialog, public productos:DataService){}
+  constructor(public dialog: MatDialog, public ajaxQuery:DataService){}
 
   ngOnInit(){
-    this.productos.getProductos().subscribe(
+    this.ajaxQuery.getProductos().subscribe(
       productos => {
         this.Dproductos=productos;
       }
@@ -47,20 +29,9 @@ export class AppComponent implements OnInit{
   }
 
   setPedidoMainApp(pedido:I_pedido){
-    this.productos.setPedidoService(pedido).subscribe(
+    this.ajaxQuery.setPedidoService(pedido).subscribe(
       pedido => {console.log(pedido)},
       error => alert('hubo un error inesperado\nPor favor contacte al administrador!')
-    );
-  }
-
-  getLoginMainApp(user,pass):any{
-    this.productos.getLoginService(user,pass).subscribe(
-      login => {
-        if(login != null){
-          return login;
-        }
-      }
-      
     );
   }
 
