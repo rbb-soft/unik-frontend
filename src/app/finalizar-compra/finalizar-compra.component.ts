@@ -15,7 +15,6 @@ export class FinalizarCompraComponent implements OnInit {
   ngOnInit(){
     this.getPedido();
     this.getCostoEnvio(this.Pedido.codigoPostal);
-    console.log('metodo de envio oninit ',this.metodoEnvio);
   }
   
 

@@ -294,9 +294,6 @@
                                     <mat-radio-button class="radio-button" value="mercadoEnvio">
                                         Mercado Envios
                                     </mat-radio-button>
-                                    <mat-radio-button class="radio-button" value="encomienda">
-                                        Encomiendas
-                                    </mat-radio-button>
                                     <mat-radio-button class="radio-button" value="retiroFabrica">
                                         Retiro en Fabrica
                                     </mat-radio-button>
@@ -368,6 +365,7 @@
                         <input  type="number" 
                                 class="form-control"
                                 name="postalC"
+                                min="0"
                                 [(ngModel)]='codigoPostal'
                                 
                         >
@@ -377,7 +375,7 @@
                                 (click)='getCostoEnvio(this.codigoPostal)'
                                 [disabled]="this.codigoPostal == 0  || this.codigoPostal == null" 
                             >
-                             Calcular Envio&nbsp;<mat-icon class="mat-icon25">local_shipping</mat-icon>&nbsp; 
+                             Envio&nbsp;<mat-icon class="mat-icon25">local_shipping</mat-icon>&nbsp; 
                         </button>
                         </div>
                         <div class="col-md-12 text-left" *ngIf='costoEnvio > 0'>
