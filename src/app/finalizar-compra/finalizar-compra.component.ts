@@ -15,17 +15,14 @@ export class FinalizarCompraComponent implements OnInit {
   ngOnInit(){
     this.getPedido();
     this.getCostoEnvio(this.Pedido.codigoPostal);
-    console.log('esDireccionParaFacturacion: ', this.Pedido.esDireccionParaFacturacion); 
+    console.log('metodo de envio oninit ',this.metodoEnvio);
   }
   
 
   // propiedades y metodos de esta clase
   matTabChoose:number=0;
-  step1:boolean=false;
-  step2:boolean=false;
-  step3:boolean=false;
-  step4:boolean=false;
-
+  metodoEnvio:string;
+  
   Pedido={
     nombre:"",
     apellido:"",
@@ -45,13 +42,13 @@ export class FinalizarCompraComponent implements OnInit {
   }
 
  
-  checkLogin(user,pass):any{
+  checkLogin(user,pass,stepper):any{
     this.appRoot.ajaxQuery.getLoginService(user,pass).subscribe(
       login => {
         if(login != null){
-          console.log("login: ",login)
           this.Pedido=login;
           this.storePedido();
+          this.changeStep(2,stepper);
         }
         else{
           alert('Email o Contraseña incorrecto/a\n\
@@ -98,8 +95,13 @@ export class FinalizarCompraComponent implements OnInit {
             (this.Pedido.provincia !== "")        &&  (this.Pedido.pais !== "");
  
   }
+  step_3(){
+    return (this.metodoEnvio != undefined);
+  }
   
- 
+  changeStep(step,stepper){
+    stepper.selectedIndex=step;
+  }
   checkNumber(num){
     return isNaN(num.value);
   }
@@ -154,8 +156,13 @@ export class FinalizarCompraComponent implements OnInit {
         let fecha= new Date(envio.options[0].estimated_delivery_time.date);
         let mes= this.meses[fecha.getMonth()];
 				let dia= fecha.getDate();
-        this.costoEnvio=envio.options[0].cost;;
-        this.tiempoDeEnvioEstimado="llega el " + dia + " de " + mes
+        this.costoEnvio=envio.options[0].cost;
+        this.tiempoDeEnvioEstimado="llega el " + dia + " de " + mes;
+        let methodShip:any={
+          "metodo":this.metodoEnvio,
+          "costo":envio.options[0].cost};
+        localStorage.setItem('Envio',JSON.stringify(methodShip));
+        
       },
       error => alert('codigo postal incorrecto!')
     )

@@ -1,11 +1,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <h1 class="col-md-8 text-center">Finalizar Compra</h1>
-    </div>
-    <div class="row">
         <div class="col-md-8 text-left">
-            <mat-horizontal-stepper linear>
+            <mat-horizontal-stepper linear #stepper>
                 <!--<mat-step label='Datos Personales'>--------------------------------------------->
                 <mat-step label='Datos Personales' completed="{{step_1()}}">
                    <mat-tab-group dynamicHeight [selectedIndex]="matTabChoose">
@@ -39,7 +36,7 @@
                                     <div class="col-md-12 text-center">
                                         <button mat-raised-button 
                                                 color='primary'
-                                                (click)="checkLogin(Pedido.email,Pedido.contrasenia)"
+                                                (click)="checkLogin(Pedido.email,Pedido.contrasenia,stepper)"
                                         >
                                             Iniciar Sesion
                                         </button>
@@ -283,7 +280,7 @@
                 <!--</mat-step label='Direcciones'>------------------------------------------------->
                 <!-- *************************************************************************************-->
                 <!--<mat-step label='Envio'>-------------------------------------------------------->
-                <mat-step label='Envio' completed="{{step3}}">
+                <mat-step label='Envio' completed="{{step_3()}}">
                     <div class="container-fluid">
                         
                         <div class="row">
@@ -291,7 +288,9 @@
                                 <label><h1>Metodo de envio</h1></label>
                                 <mat-radio-group
                                     aria-labelledby="example-radio-group-label"
-                                    class="radio-group">
+                                    class="radio-group"
+                                    [(ngModel)]="metodoEnvio"
+                                    (change)="getCostoEnvio(cp.value)">
                                     <mat-radio-button class="radio-button" value="mercadoEnvio">
                                         Mercado Envios
                                     </mat-radio-button>
@@ -302,6 +301,7 @@
                                         Retiro en Fabrica
                                     </mat-radio-button>
                                 </mat-radio-group>
+                                {{ metodoEnvio }}
                             </div>
                             
 
