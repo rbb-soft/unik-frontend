@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { I_productos } from '../models/productos.interface';
 import { I_pedido } from '../models/Pedido.interface';
+import { I_compra } from '../models/Compra.interface';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class DataService {
 
   constructor(private http:HttpClient) { }
 
-  getProductos(){
+  getProductosService(){
     return this.http.get<I_productos[]>('http://localhost/nucleo/model/list.php');
   }
   getCostoEnvio(cp){
@@ -22,5 +23,8 @@ export class DataService {
   }
   getLoginService(user:string,pass:string){
     return this.http.post<I_pedido>('http://localhost/nucleo/model/getLogin.php', {'user':user,'pass':pass});
+  }
+  setCompraService(compra:I_compra){
+    return this.http.post<I_compra>('http://localhost/nucleo/model/setCompra.php',compra);
   }
 }

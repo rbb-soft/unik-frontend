@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { I_compra } from '../models/Compra.interface';
+import { I_envio } from '../models/Envio.interface';
 
 
 @Component({
@@ -15,12 +17,17 @@ export class FinalizarCompraComponent implements OnInit {
   ngOnInit(){
     this.getPedido();
     this.getCostoEnvio(this.Pedido.codigoPostal);
+    this.getStorageCostoEnvio();
   }
   
 
   // propiedades y metodos de esta clase
   matTabChoose:number=0;
   metodoEnvio:string;
+  Envio:I_envio={
+    metodo:"",
+    costo:0
+  }
   
   Pedido={
     nombre:"",
@@ -80,7 +87,33 @@ export class FinalizarCompraComponent implements OnInit {
                   :   
                     this.Pedido;
   }
-
+  setCompra(){
+    if(!this.step_3()){
+      return;
+    }
+    let envio:I_envio={
+      costo:this.costoEnvio,
+      metodo: this.metodoEnvio
+    }
+    let compra:I_compra={
+      
+      Productos:this.appRoot.Dcarrito,
+      Pedido: this.Pedido,
+      Envio: envio
+    }
+    this.appRoot.ajaxQuery.setCompraService(compra)
+    .subscribe(
+      compra =>{
+        console.log('setCompra().compra: ',compra);
+      },
+      error => {
+        console.error("error: ",console.error()
+        )
+      }
+    );
+    
+  }
+  // forms methods
   step_1(){
     return  (this.Pedido.email !== "") && (this.Pedido.nombre !== "") && 
             (this.Pedido.apellido !== "");
@@ -146,8 +179,15 @@ export class FinalizarCompraComponent implements OnInit {
     );
     return total
   }
-  
-  getCostoEnvio(cp){
+  getStorageCostoEnvio(){
+    this.Envio= JSON.parse(localStorage.getItem("Envio")) != null 
+                  ?
+                    JSON.parse(localStorage.getItem("Envio")) 
+                  :   
+                    this.Envio;
+
+  }
+  getCostoEnvio(cp):number{
     if(cp == 0)  return;
     let costo:number=0;
     this.appRoot.ajaxQuery.getCostoEnvio(cp).subscribe(

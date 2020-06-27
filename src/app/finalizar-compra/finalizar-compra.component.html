@@ -306,7 +306,13 @@
                     </div>
                     <div>
                         <button color='warn' mat-raised-button matStepperPrevious>Volver</button>&nbsp;
-                        <button color='accent' mat-raised-button matStepperNext>Continuar</button>
+                        <button color='accent' 
+                                mat-raised-button
+                                matStepperNext
+                                (click)="setCompra()"
+                                >
+                                Continuar
+                        </button>
                     </div>
                 </mat-step>
                 <!--</mat-step label='Envio'>------------------------------------------------------->

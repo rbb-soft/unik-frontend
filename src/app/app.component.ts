@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   constructor(public dialog: MatDialog, public ajaxQuery:DataService){}
 
   ngOnInit(){
-    this.ajaxQuery.getProductos().subscribe(
+    this.ajaxQuery.getProductosService().subscribe(
       productos => {
         this.Dproductos=productos;
       }
