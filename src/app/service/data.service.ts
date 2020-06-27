@@ -27,4 +27,12 @@ export class DataService {
   setCompraService(compra:I_compra){
     return this.http.post<I_compra>('http://localhost/nucleo/model/setCompra.php',compra);
   }
+  setPagoService(compra:I_compra){
+    return  this.http.post('http://localhost/nucleo/model/setPago.php', compra,
+      {
+         headers: new HttpHeaders().set('Content-Type', 'text/html; charset=utf-8'),
+         responseType: 'text' 
+      }
+      );
+  }
 }

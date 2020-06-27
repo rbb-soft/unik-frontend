@@ -24,6 +24,7 @@ export class FinalizarCompraComponent implements OnInit {
   // propiedades y metodos de esta clase
   matTabChoose:number=0;
   metodoEnvio:string;
+  metodoPago:string;
   step_4:boolean=false;
   Envio:I_envio={
     metodo:"",
@@ -55,7 +56,7 @@ export class FinalizarCompraComponent implements OnInit {
         if(login != null){
           this.Pedido=login;
           this.storePedido();
-          this.changeStep(2,stepper);
+          setTimeout(() => {this.changeStep(2,stepper)},1000);
         }
         else{
           alert('Email o Contraseña incorrecto/a\n\
@@ -102,13 +103,39 @@ export class FinalizarCompraComponent implements OnInit {
     this.appRoot.ajaxQuery.setCompraService(compra)
     .subscribe(
       compra =>{
-        this.step_4=true;
+        if(this.metodoEnvio != undefined){
+          this.step_4=true;
+        }
+ 
       },
       error => {
         alert('Error al procesar envio\npor favor notifique al administrador');
       }
     );
     
+  }
+
+  setPago(){
+    let envio:I_envio={
+      costo:this.costoEnvio,
+      metodo: this.metodoEnvio
+    }
+    let compra:I_compra={
+      
+      Productos:this.appRoot.Dcarrito,
+      Pedido: this.Pedido,
+      Envio: envio
+    }
+    this.appRoot.ajaxQuery.setPagoService(compra).subscribe(
+      pago => {
+        let respuesta = document.getElementById("respuesta");
+        respuesta.innerHTML = pago;
+        console.log('pago: ',pago)
+      },
+      error => {
+        console.log('Error!');
+      }
+    );
   }
   // forms methods
   step_1(){

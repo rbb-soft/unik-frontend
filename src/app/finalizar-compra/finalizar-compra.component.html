@@ -298,7 +298,6 @@
                                         Retiro en Fabrica
                                     </mat-radio-button>
                                 </mat-radio-group>
-                                {{ metodoEnvio }}
                             </div>
                             
 
@@ -326,7 +325,9 @@
                                 <label><h1>Metodo de Pago</h1></label>
                                 <mat-radio-group
                                     aria-labelledby="example-radio-group-label"
-                                    class="radio-group">
+                                    class="radio-group"
+                                    [(ngModel)]="metodoPago"
+                                    >
                                     <mat-radio-button class="radio-button" value="mercadoPago">
                                         Mercado Pago
                                     </mat-radio-button>
@@ -334,6 +335,23 @@
                                         Transferencia Bancaria
                                     </mat-radio-button>
                                 </mat-radio-group>
+                                
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="metodoPago=='mercadoPago'">
+                            <div class="col-md-12">
+                                <h1>mercado pago</h1>
+                                <button (click)="setPago()">
+                                    debug
+                                </button>
+                                <div id="respuesta">
+                                    div respuesta
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="metodoPago=='bancaria'">
+                            <div class="col-md-12">
+                                <h1>Transferencia Bancaria</h1>
                             </div>
                         </div>
                     </div>
