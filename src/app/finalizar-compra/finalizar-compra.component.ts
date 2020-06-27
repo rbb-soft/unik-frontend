@@ -24,6 +24,7 @@ export class FinalizarCompraComponent implements OnInit {
   // propiedades y metodos de esta clase
   matTabChoose:number=0;
   metodoEnvio:string;
+  step_4:boolean=false;
   Envio:I_envio={
     metodo:"",
     costo:0
@@ -88,9 +89,6 @@ export class FinalizarCompraComponent implements OnInit {
                     this.Pedido;
   }
   setCompra(){
-    if(!this.step_3()){
-      return;
-    }
     let envio:I_envio={
       costo:this.costoEnvio,
       metodo: this.metodoEnvio
@@ -104,11 +102,10 @@ export class FinalizarCompraComponent implements OnInit {
     this.appRoot.ajaxQuery.setCompraService(compra)
     .subscribe(
       compra =>{
-        console.log('setCompra().compra: ',compra);
+        this.step_4=true;
       },
       error => {
-        console.error("error: ",console.error()
-        )
+        alert('Error al procesar envio\npor favor notifique al administrador');
       }
     );
     
@@ -128,7 +125,7 @@ export class FinalizarCompraComponent implements OnInit {
  
   }
   step_3(){
-    return (this.metodoEnvio != undefined);
+    return (this.metodoEnvio != undefined) && (this.step_4 == true);
   }
   
   changeStep(step,stepper){
