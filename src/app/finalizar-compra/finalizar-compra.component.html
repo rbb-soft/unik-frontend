@@ -308,7 +308,7 @@
                         <button color='accent' 
                                 mat-raised-button
                                 matStepperNext
-                                (click)="setCompra()"
+                                (click)="setCompra(stepper)"
                                 >
                                 Continuar
                         </button>
@@ -339,13 +339,27 @@
                             </div>
                         </div>
                         <div class="row" *ngIf="metodoPago=='mercadoPago'">
+                            <h1>Pagar con Mercado Pago</h1>
+                            <div class="col-md-12" *ngIf="showDetailsPago">
+                                <h1 class="text-muted">
+                                    Resumen
+                                </h1>
+                                <ul class="list-group" *ngIf="appRoot.Dcarrito.length > 0">
+                                    <li class="list-group-item"><h1 class="col-md-12 text-center text-muted">Resumen de Compra</h1></li>
+                                    <li class="list-group-item text-left">
+                                        <p>Cantidad de Articulos: {{getTotalItemsWithSubtotal()}} </p>
+                                        <p>Precio Total <small>(IVA Incluido)</small>: ${{getTotalPriceItemsWithSubtotal() | number}}<small>ARS</small> </p>
+                                        <p>Costo Envio: ${{costoEnvio | number }}ARS</p>
+                                        <p>Total con Envio: {{ getTotalPriceItemsWithSubtotal() + costoEnvio | number}}</p>
+                                    </li>
+                                </ul> 
+                            </div>
                             <div class="col-md-12">
-                                <h1>mercado pago</h1>
-                                <button (click)="setPago()">
-                                    debug
-                                </button>
                                 <div id="respuesta">
-                                    div respuesta
+                                    <button class="btn btn-success"
+                                            (click)="setPago()">
+                                        Procesar!
+                                    </button>
                                 </div>
                             </div>
                         </div>

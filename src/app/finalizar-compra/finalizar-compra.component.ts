@@ -26,6 +26,7 @@ export class FinalizarCompraComponent implements OnInit {
   metodoEnvio:string;
   metodoPago:string;
   step_4:boolean=false;
+  showDetailsPago:boolean=false;
   Envio:I_envio={
     metodo:"",
     costo:0
@@ -89,7 +90,7 @@ export class FinalizarCompraComponent implements OnInit {
                   :   
                     this.Pedido;
   }
-  setCompra(){
+  setCompra(stepper){
     let envio:I_envio={
       costo:this.costoEnvio,
       metodo: this.metodoEnvio
@@ -105,6 +106,7 @@ export class FinalizarCompraComponent implements OnInit {
       compra =>{
         if(this.metodoEnvio != undefined){
           this.step_4=true;
+          setTimeout(()=> this.changeStep(3,stepper),1000);
         }
  
       },
@@ -130,7 +132,7 @@ export class FinalizarCompraComponent implements OnInit {
       pago => {
         let respuesta = document.getElementById("respuesta");
         respuesta.innerHTML = pago;
-        console.log('pago: ',pago)
+        this.showDetailsPago=true;
       },
       error => {
         console.log('Error!');
