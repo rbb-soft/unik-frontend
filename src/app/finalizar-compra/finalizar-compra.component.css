@@ -1,3 +1,17 @@
+@media (min-width: 768px) { 
+  .center {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+  }
+ }
+ 
 .small-box, .large-box {
     display: flex;
     align-items: center;
@@ -27,6 +41,10 @@
     font-size: 80px;
     
   }
+  .mat-icon25{
+    font-size: 25px;
+  }
+  
   .radio-group {
     display: flex;
     flex-direction: column;

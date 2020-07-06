@@ -341,9 +341,6 @@
                         <div class="row" *ngIf="metodoPago=='mercadoPago'">
                             <h1>Pagar con Mercado Pago</h1>
                             <div class="col-md-12" *ngIf="showDetailsPago">
-                                <h1 class="text-muted">
-                                    Resumen
-                                </h1>
                                 <ul class="list-group" *ngIf="appRoot.Dcarrito.length > 0">
                                     <li class="list-group-item"><h1 class="col-md-12 text-center text-muted">Resumen de Compra</h1></li>
                                     <li class="list-group-item text-left">
@@ -413,7 +410,7 @@
                                 (click)='getCostoEnvio(this.codigoPostal)'
                                 [disabled]="this.codigoPostal == 0  || this.codigoPostal == null" 
                             >
-                             Envio&nbsp;<mat-icon class="mat-icon25">local_shipping</mat-icon>&nbsp; 
+                             Calcular&nbsp;<mat-icon class="mat-icon25">local_shipping</mat-icon>&nbsp; 
                         </button>
                         </div>
                         <div class="col-md-12 text-left" *ngIf='costoEnvio > 0'>
